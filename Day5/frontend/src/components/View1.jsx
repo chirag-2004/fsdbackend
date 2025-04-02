@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const View = () => {
+const View1 = () => {
     const [users, setUsers] = useState([]);
     
     useEffect(() => {
@@ -44,4 +44,4 @@ const View = () => {
     );
 }
 
-export default View;
+export default View1;
