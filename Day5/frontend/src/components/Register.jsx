@@ -13,8 +13,8 @@ const Register = () => {
     return (
     <div>
         <form onSubmit={handleRegister}>
-            <label>Name:</label><input type="text" name="name" /> <br/>
-            <label>Age:</label><input type="number" name="age"/> <br/>
+            <label>Name:</label><input type="text" name="name" /> <br/><br/>
+            <label>Age:</label><input type="number" name="age"/> <br/><br/>
             <button type='submit'>Register</button>
         </form>
     </div>

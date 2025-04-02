@@ -1,35 +1,47 @@
-import React, { useState,useEffect } from 'react'
-import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 const View = () => {
-    const [users,setUsers]=useState([]);
-    useEffect(()=>{
+    const [users, setUsers] = useState([]);
+    
+    useEffect(() => {
         viewdata();
-    },[])
-    const viewdata = async ()=>{
-        const res=await axios.get('http://localhost:9000/users');
-        console.log(res);
-        setUsers(res.data);
+    }, []);
+
+    const viewdata = async () => {
+        try {
+            const res = await axios.get('http://localhost:9000/users');
+            setUsers(res.data);
+        } catch (error) {
+            console.error("Error fetching users:", error);
+        }
     }
 
-  return (
-    <div>
-        <h1>Registerd Users List</h1>
-        <table style={{border: '2px solid red',backgroundColor: 'greenyellow',width: '100%',textAlign: 'center'}}>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Age</th>
-            </tr>
-            {users.map((user) => (
-                <tr key={user.id}>
-                    <td>{user.id}</td>
-                    <td>{user.name}</td>
-                    <td>{user.age}</td>
-                </tr>
-            ))}
-        </table>
-     </div>
-  )
+    return (
+        <div className="container mx-auto p-4">
+            <h1 className="text-2xl font-bold text-center mb-4">Registered Users List</h1>
+            <div className="overflow-x-auto">
+                <table className="min-w-full bg-white border border-gray-300 shadow-md rounded-lg">
+                    <thead>
+                        <tr className="bg-green-600 text-white">
+                            <th className="py-2 px-4 border">ID</th>
+                            <th className="py-2 px-4 border">Name</th>
+                            <th className="py-2 px-4 border">Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map((user) => (
+                            <tr key={user.id} className="text-center border hover:bg-gray-100">
+                                <td className="py-2 px-4 border">{user.id}</td>
+                                <td className="py-2 px-4 border">{user.name}</td>
+                                <td className="py-2 px-4 border">{user.age}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
 }
 
-export default View
+export default View;
