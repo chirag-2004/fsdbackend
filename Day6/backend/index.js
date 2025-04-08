@@ -9,7 +9,7 @@ import user from './models/user.js';
 //     res.send("Welcome ");
 // })
 connectDB();
-app.post("/user",async(req,res)=>{
+app.post("/",async(req,res)=>{
     try{
         await user.create(req.body);
         res.status(201).json({message:"User created successfully"});
