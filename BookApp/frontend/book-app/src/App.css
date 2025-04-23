@@ -1,0 +1,75 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #FDFCFB;
+  color: #333;
+}
+
+nav {
+  background-color: #077A7D;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+nav a:hover {
+  background-color: #00BFA6;
+  transform: scale(1.05);
+}
+
+nav a.active {
+  background-color: #06202B;
+}
+
+div {
+  padding: 30px;
+  text-align: center;
+}
+
+h1 {
+  color: #06202B;
+  font-size: 28px;
+  margin: 30px 0 20px;
+}
+
+input[type="text"], input[type="date"], input[type="file"] {
+  padding: 8px 12px;
+  margin: 0 8px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 180px;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus, input[type="date"]:focus, input[type="file"]:focus {
+  border-color: #077A7D;
+  outline: none;
+}
+
+button, input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #077A7D;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: #00BFA6;
+}

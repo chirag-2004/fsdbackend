@@ -6,32 +6,69 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 dotenv.config();
-//Connect to Mongodb
+//connect to mongodb
 mongoose
   .connect(process.env.MONGODB_URI)
-  .then(() => console.log("connected to Mongo db"))
-  .catch((error) => console.log("Error in Connection",error));
+  .then(() => console.log("connected to mongodb"))
+  .catch((err) => console.log("failed to connect"));  
 
-//Design Book Schema
-const BookSchema=new mongoose.Schema({
+// Design Book Schema
+const BookSchema = new mongoose.Schema({
     title: String,
     author: String,
     date: String,
     image: String
 })
-// Design Book Model
+// Design Model 
 const Book=mongoose.model('MyBook',BookSchema)
 
 app.post('/books',async (req,res)=>{
     try {
-    const newbook=new Book(req.body);
-    await newbook.save();
-    res.status(200).send('Book Added')
+        const NewBook=new Book(req.body);
+        await NewBook.save();
+        res.json(Book);
     } catch (error) {
-        res.status(500).send('Sever Error')
+        console.error(error);
+        res.status(500).send('Server Error')
+        
     }
 })
 
+app.get('/books',async (req,res)=>{
+    try {
+        const Books=await Book.find();
+        res.json(Books);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Server Error')
+        
+    }
+})
+app.get('/books/:id',async (req,res)=>{
+    const book= await Book.findById(req.params.id);
+    if(!book)
+        return res.status(404).send('Book Not Found')
+    res.json(book)
+})
+
+app.get('/search', async (req, res) => {
+    const { title } = req.query;
+    try {
+        const books = await Book.find({ title: { $regex: title, $options: 'i' } }); // case-insensitive search
+        res.json(books);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+});
+
+
+app.put('/books/:id',async (req,res)=>{
+    const book=await Book.findByIdAndUpdate(req.params.id,req.body)
+    if(!book)
+        return res.status(404).send('Book Not Found')
+    res.json(book)
+})
 app.listen(9000,()=>{
-    console.log('Server is Running on port 9000')
+    console.log('server is running on port 9000')
 })
