@@ -19,8 +19,9 @@ const AddBook = () => {
         Author: <input type='text' name='author' required />
         Date: <input type='date' name='date' required />
         Image: <input type='text' name='image' required />
-       <br />
-       <button type='submit'>Add Book</button>
+        <br />
+        <br /> {/* Added extra space above the button */}
+        <button type='submit'>Add Book</button>
       </form>
     </div>
   )
