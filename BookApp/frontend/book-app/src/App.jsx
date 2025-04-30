@@ -19,7 +19,7 @@ const App = () => {
           <Link to="/delete">Delete Book</Link>
         </nav>
         <Routes>
-          <Route path="/" element={<h1>Welcome to the Book App</h1>} />
+          <Route path="/" element={<h1 style={{ marginBottom: '290px' }}>Welcome to the Book App</h1>} />
           <Route path="/add" element={<AddBook />} />
           <Route path="/view" element={<ViewBook />} />
           <Route path="/search" element={<SearchBook />} />
@@ -27,9 +27,9 @@ const App = () => {
           <Route path="/delete" element={<DeleteBook />} />
         </Routes>
       </Router>
-      {/* <footer style={{ backgroundColor: '#077A7D', color: '#fff', textAlign: 'center', padding: '5px 0', marginTop: '0px' }}>
+      <footer style={{ backgroundColor: '#077A7D', color: '#fff', textAlign: 'center', padding: '5px 0', marginTop: '0px' }}>
         <p>Chirag Gupta | Roll Number: 2200321540057 | Branch: CSE DS</p>
-      </footer> */}
+      </footer>
     </div>
   );
 };

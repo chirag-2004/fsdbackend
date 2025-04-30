@@ -216,7 +216,7 @@ const UpdateBook = () => {
                 fontSize: '16px',
                 cursor: 'pointer',
                 transition: 'background-color 0.3s ease',
-              }}
+                }}
             >
               Update Book
             </button>
