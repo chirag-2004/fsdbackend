@@ -27,6 +27,9 @@ const App = () => {
           <Route path="/delete" element={<DeleteBook />} />
         </Routes>
       </Router>
+      {/* <footer style={{ backgroundColor: '#077A7D', color: '#fff', textAlign: 'center', padding: '5px 0', marginTop: '0px' }}>
+        <p>Chirag Gupta | Roll Number: 2200321540057 | Branch: CSE DS</p>
+      </footer> */}
     </div>
   );
 };

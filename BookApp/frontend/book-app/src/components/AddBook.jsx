@@ -21,7 +21,7 @@ const AddBook = () => {
         Image: <input type='text' name='image' required />
         <br />
         <br /> {/* Added extra space above the button */}
-        <button type='submit'>Add Book</button>
+        <button type='submit' style={{ marginBottom: '120px' }}>Add Book</button> {/* Added margin below the button */}
       </form>
     </div>
   )
