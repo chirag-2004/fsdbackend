@@ -13,7 +13,7 @@ const DeleteBook = () => {
   const fetchBooks = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.get('http://localhost:9000/books');
+      const res = await axios.get('https://fsdbackend-2-5qmu.onrender.com/books');
       setBooks(res.data);
       setError(null);
     } catch (error) {
@@ -29,7 +29,7 @@ const DeleteBook = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:9000/books/${id}`);
+      await axios.delete(`https://fsdbackend-2-5qmu.onrender.com/books/${id}`);
       alert('Book deleted successfully');
       fetchBooks();
     } catch (error) {
@@ -43,10 +43,10 @@ const DeleteBook = () => {
     if (book.imageUrl) return book.imageUrl;
     if (book.coverId || book.cover_id) {
       const coverId = book.coverId || book.cover_id;
-      return `http://localhost:9000/books/covers/${coverId}`;
+      return `https://fsdbackend-2-5qmu.onrender.com/books/covers/${coverId}`;
     }
     const bookId = book._id || book.id;
-    return `http://localhost:9000/books/${bookId}/cover`;
+    return `https://fsdbackend-2-5qmu.onrender.com/books/${bookId}/cover`;
   };
 
   if (isLoading) return <div className="loading">Loading books...</div>;

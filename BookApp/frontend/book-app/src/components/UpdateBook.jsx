@@ -21,7 +21,7 @@ const UpdateBook = () => {
     }
 
     try {
-      const { data } = await axios.get(`http://localhost:9000/search?title=${encodeURIComponent(bookName)}`);
+      const { data } = await axios.get(`https://fsdbackend-2-5qmu.onrender.com/search?title=${encodeURIComponent(bookName)}`);
       if (data.length > 0) {
         setSearchResults(data);
         setMessage(`${data.length} book(s) found. Please select one to update.`);
@@ -53,7 +53,7 @@ const UpdateBook = () => {
     }
 
     try {
-      await axios.put(`http://localhost:9000/books/${selectedBook._id}`, selectedBook);
+      await axios.put(`https://fsdbackend-2-5qmu.onrender.com/books/${selectedBook._id}`, selectedBook);
       setMessage('Book updated successfully');
       setMessageType('success');
       setBookName('');
